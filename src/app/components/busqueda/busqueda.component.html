@@ -1,0 +1,29 @@
+<form [formGroup]="busqueda">
+    <input type="text" class="form-control" (keyup)="buscarr(busqueda.value)" name="buscar" formControlName="buscar" placeholder="Buscar">
+
+    <button class="btn btn-block btn-danger mt-3" (click)="buscarr(busqueda.value)">Buscar</button>
+</form>
+
+<div class="row row-cols-1 row-cols-md-3 mt-3">
+    <div class="col mb-4 cursor" *ngFor="let pelis of peliculas" (click)="peliin(pelis.id)">
+        <div class="card">
+            <img *ngIf="pelis.poster_path" [src]="img+pelis.poster_path" class="card-img-top" alt="...">
+            <img *ngIf="!pelis.poster_path" src="../../../assets/img/No_image_3x4.svg.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{pelis.title}}</h5>
+                <p class="card-text">Fecha de lanzamiento: {{pelis.release_date}}</p>
+                <p class="card-text">Popularidad: {{pelis.popularity}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">
+        No hay registro
+    </h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+
+</div>

@@ -1,0 +1,12 @@
+<button mat-mini-fab color="warn" class="cerrar" (click)="cerrar()"><i class="fas fa-times"></i></button>
+<h1 mat-dialog-title>{{peliculas.title}}</h1>
+<mat-dialog-content class="mat-typography">
+    <img [src]="img+peliculas.poster_path" alt="" class="col-6 img1">
+    <div class="col-6 float-right text-left">
+        <h3>
+            {{peliculas.title}}
+        </h3>
+        <p>{{peliculas.overview}}</p>
+        <p>{{peliculas.release_date}}</p>
+    </div>
+</mat-dialog-content>

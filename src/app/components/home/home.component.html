@@ -1,0 +1,12 @@
+<div class="mt-3">
+    <div class="mt-3">
+        <app-galeria [cartelera]="PeliPopulares1 | slice:0:6" titulo="Peliculas populares"></app-galeria>
+    </div>
+
+    <div class="mt-5">
+        <app-galeria [cartelera]="cartelera1 | slice:0:6" titulo="Peliculas En cartelera"></app-galeria>
+    </div>
+    <div class="mt-5">
+        <app-galeria [cartelera]="kids1 | slice:0:6" titulo="Peliculas para niños"></app-galeria>
+    </div>
+</div>

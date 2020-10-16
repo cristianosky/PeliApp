@@ -1,0 +1,36 @@
+<h1>{{titulo}}</h1>
+<hr>
+<div class="container" *ngIf="peliculas">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div (click)="peliin(peliculas[0].id)" class="cursor col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url('+ (peliculas[0] | controladordeimg) +')'}">
+                    <p class="pic-titulo">{{peliculas[0].title}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cursor col-sm-6 div-pic-2" (click)="peliin(peliculas[1].id)" [ngStyle]="{'background-image': 'url('+ (peliculas[1] | controladordeimg) +')'}">
+                    <p class="pic-titulo">{{peliculas[1].title}}</p>
+                </div>
+                <div class="cursor col-sm-6 div-pic-2" (click)="peliin(peliculas[2].id)" [ngStyle]="{'background-image': 'url('+ (peliculas[2] | controladordeimg) +')'}">
+                    <p class="pic-titulo">{{peliculas[2].title}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="cursor col-sm-6 div-pic-2" (click)="peliin(peliculas[3].id)" [ngStyle]="{'background-image': 'url('+ (peliculas[3] | controladordeimg) +')'}">
+                    <p class="pic-titulo">{{peliculas[3].title}}</p>
+                </div>
+                <div class="cursor col-sm-6 div-pic-2" (click)="peliin(peliculas[4].id)" [ngStyle]="{'background-image': 'url('+ (peliculas[4] | controladordeimg) +')'}">
+                    <p class="pic-titulo">{{peliculas[4].title}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cursor col-md-12 div-pic-1" (click)="peliin(peliculas[5].id)" [ngStyle]="{'background-image': 'url('+ (peliculas[5] | controladordeimg) +')'}">
+                    <p class="pic-titulo">{{peliculas[5].title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
