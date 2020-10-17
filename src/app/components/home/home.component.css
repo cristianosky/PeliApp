@@ -4,4 +4,17 @@
 
 .genero {
     margin-top: 6%;
+    /* margin-right: 1px; */
+}
+
+.cerrarg {
+    float: right;
+}
+
+.buton {
+    margin-left: 3%;
+}
+
+.conten {
+    margin-left: 50px;
 }

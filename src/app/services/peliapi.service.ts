@@ -55,4 +55,14 @@ export class PeliapiService {
     let url = `${this.urlMoviedb}/discover/movie?api_key=${this.apikey}&with_genres=${genero}&language=es`;
     return this.http.get(url);
   }
+
+  pagues(genero, pagues){
+    let url = `${this.urlMoviedb }/discover/movie?api_key=${this.apikey}&with_genres=${genero}&page=${pagues}&language=es`
+    return this.http.get(url);
+  }
+
+  pagesb(texto, pagues){
+    let url = `${ this.urlMoviedb }/search/movie?query=${ texto }&sort_by=popularity.desc&api_key=${ this.apikey }&page=${pagues}&language=es`;
+    return this.http.get(url);
+  }
 }
