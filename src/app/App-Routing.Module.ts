@@ -7,7 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
     {path: 'home', component: HomeComponent},
     
-    {path: 'buscar', component: BusquedaComponent},
+    {path: 'genero/:id', component: BusquedaComponent},
 
     {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];

@@ -34,6 +34,11 @@ export class PeliapiService {
     return this.http.get(url);
   }
 
+  getGenero(){
+    let url = `${this.urlMoviedb}/genre/movie/list?api_key=${this.apikey}&language=es`;
+    return this.http.get(url);
+  }
+
 
   buscarPelicula( texto:string ){
 
@@ -43,6 +48,11 @@ export class PeliapiService {
 
   pelicula(id:string){
     let url =`${this.urlMoviedb }/movie/${ id }?api_key=${ this.apikey }&language=es`;
+    return this.http.get(url);
+  }
+
+  peliculasg(genero){
+    let url = `${this.urlMoviedb}/discover/movie?api_key=${this.apikey}&with_genres=${genero}&language=es`;
     return this.http.get(url);
   }
 }

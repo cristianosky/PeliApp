@@ -1,9 +1,13 @@
-<form [formGroup]="busqueda">
-    <input type="text" class="form-control" (keyup)="buscarr(busqueda.value)" name="buscar" formControlName="buscar" placeholder="Buscar">
-
-    <button class="btn btn-block btn-danger mt-3" (click)="buscarr(busqueda.value)">Buscar</button>
-</form>
-
+<div class="row">
+    <div class="col-8">
+        <div *ngFor="let item of ggnero">
+            <h1 *ngIf="item.id == id">Resultados del genero : <small>{{item.name}}</small></h1>
+        </div>
+    </div>
+    <div class="col-4">
+        <button routerLink="/home" class="btn btn-danger">Regresar</button>
+    </div>
+</div>
 <div class="row row-cols-1 row-cols-md-3 mt-3">
     <div class="col mb-4 cursor" *ngFor="let pelis of peliculas" (click)="peliin(pelis.id)">
         <div class="card">

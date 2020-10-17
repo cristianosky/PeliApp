@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { PeliapiService } from 'src/app/services/peliapi.service';
 import { ModalmaterialComponent } from '../modalmaterial/modalmaterial.component';
 
@@ -10,48 +10,39 @@ import { ModalmaterialComponent } from '../modalmaterial/modalmaterial.component
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
-    busqueda: FormGroup;
     peliculas: any;
     img= 'https://image.tmdb.org/t/p/w500';
+    generot:string;
+    ggnero:any
+    id:any
 
     cargando: boolean;
-  
+    
     constructor(
-    private fb: FormBuilder,
     private _cs:PeliapiService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: ActivatedRoute
     ) { }
     
-    get buscar(){
-      return this.busqueda.get('buscar');
-    }
-
     ngOnInit(): void {
-      this.creatbucaqueda();
+      this.getgenero();
       this.cargando = false;
+      this.buscarr();
     }
 
-    creatbucaqueda(){
-    this.busqueda = this.fb.group({
-      buscar: ['', Validators.required]
-    })
+    buscarr(){
+      const id = this.route.snapshot.paramMap.get('id');
+      this._cs.peliculasg(id).subscribe((resp:any)=>{
+        this.peliculas = resp.results
+      });
     }
 
-    buscarr(texto){
-    if(texto.buscar){
-      this._cs.buscarPelicula(texto.buscar).subscribe((resp:any)=>{
-        if(resp.results.length > 1){
-          this.peliculas = resp.results
-          this.cargando = false
-        }else{
-          this.cargando = true
-          this.peliculas=[]
-        }
-
+    getgenero(){
+      const id = this.route.snapshot.paramMap.get('id');
+      this.id = id
+      this._cs.getGenero().subscribe((resp:any)=>{
+        this.ggnero = resp.genres
       })
-    }else{
-      return
-    }
     }
 
     peliin(id:string){
