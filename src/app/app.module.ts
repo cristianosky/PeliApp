@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ControladordeimgPipe } from './pipes/controladordeimg.pipe';
 import { GaleriaComponent } from './components/home/galeria.component';
 import {MatButtonModule} from '@angular/material/button';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 
@@ -35,7 +36,8 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

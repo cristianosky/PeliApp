@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PeliapiService } from 'src/app/services/peliapi.service';
 import {MatDialog} from '@angular/material/dialog';
 import { ModalmaterialComponent, peliculain } from '../modalmaterial/modalmaterial.component';
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   tbusque:any;
   busqueda: FormGroup;
   generos: any;
-  peliculas: any;
+  peliculas: Array<any>;;
   cargando:boolean;
   PeliPopulares1:peliculain
   cartelera1:peliculain
@@ -23,6 +23,9 @@ export class HomeComponent implements OnInit {
   id:any
   pages:number
   tpages:number
+  showScrollHeight = 400;
+  hideScrollHeight = 200;
+  showGoUpButton: boolean;
 
   img= 'https://image.tmdb.org/t/p/w500';
 
@@ -46,6 +49,40 @@ export class HomeComponent implements OnInit {
       this.pages = 1
     
     }
+    
+    addpeli(texto){
+      if(texto == 'genero'){
+        if(this.pages < this.tpages){
+          this.paguina('siguiente');
+        }
+      }else {
+        if(this.pages < this.tpages){
+          this.paginab('siguiente');
+        }
+      }
+    }
+
+    @HostListener('window:scroll', [])
+    onWindowScroll() {
+    if (( window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop) > this.showScrollHeight) {
+      this.showGoUpButton = true;
+    } else if ( this.showGoUpButton &&
+      (window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop)
+      < this.hideScrollHeight) {
+      this.showGoUpButton = false;
+    }
+  }
+
+    
+    scrollTop() {
+    document.body.scrollTop = 0; // Safari
+    document.documentElement.scrollTop = 0; // Other
+    }
+
 
     populares(){
       this._ps.getPopulares().subscribe((resp:any)=>{
@@ -128,15 +165,18 @@ export class HomeComponent implements OnInit {
     paguina(texto: string){
       let sumar = 1
       let restar = 1
+      const line = 'New line'
       if(texto === 'siguiente'){
         this.pages = this.pages + sumar
       } else {
         this.pages = this.pages - restar
       }
       this._ps.pagues(this.id, this.pages).subscribe((resp:any)=>{
-        this.peliculas = resp.results
+        for(let i= 0; i < resp.results.length; i++){
+          // console.log(resp.results[i]);
+          this.peliculas.push(resp.results[i]);
+        }
       })
-      window.scroll(0,0);
     }
 
     paginab(texto:string){
@@ -148,7 +188,10 @@ export class HomeComponent implements OnInit {
         this.pages = this.pages - restar
       }
       this._ps.pagesb(this.tbusque, this.pages).subscribe((resp:any)=>{
-        this.peliculas = resp.results
+        for(let i= 0; i < resp.results.length; i++){
+          // console.log(resp.results[i]);
+          this.peliculas.push(resp.results[i]);
+        }
       })
       window.scroll(0,0);
     }
