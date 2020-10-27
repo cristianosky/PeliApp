@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalmaterialComponent } from '../modalmaterial/modalmaterial.component';
+import { ModalmaterialComponent, peliculain } from '../modalmaterial/modalmaterial.component';
 
 @Component({
   selector: 'app-galeria',
@@ -10,12 +10,13 @@ import { ModalmaterialComponent } from '../modalmaterial/modalmaterial.component
 })
 export class GaleriaComponent implements OnInit {
 
-  @Input('cartelera') peliculas;
+  @Input('cartelera') peliculas: peliculain;
   @Input('titulo') titulo;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    
   }
 
 

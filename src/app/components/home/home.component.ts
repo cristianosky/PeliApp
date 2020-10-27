@@ -39,6 +39,8 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
       this.populares();
       this.PeliPopulares1;
+      this.cartelera1;
+      this.kids1;
       this.cartelera();
       this.kids();
       this.cargando = false

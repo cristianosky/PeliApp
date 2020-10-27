@@ -22,7 +22,7 @@ export class ModalmaterialComponent implements OnInit {
   peliculas: peliculain
   
 
-  img= 'https://image.tmdb.org/t/p/w500';
+  img:string;
 
   constructor(
     public dialogRef: MatDialogRef<ModalmaterialComponent>,
@@ -41,6 +41,7 @@ export class ModalmaterialComponent implements OnInit {
       release_date: "",
       poster_path: ""
     }
+    this.img = 'https://image.tmdb.org/t/p/w400';
   }
 
   dialopeli(){

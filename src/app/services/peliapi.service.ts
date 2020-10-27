@@ -21,16 +21,19 @@ export class PeliapiService {
     let desde = new Date();
     let hasta = new Date();
     hasta.setDate(hasta.getDate()+7);
+    if(hasta.getDay.length < 2){
+      hasta.setDate(hasta.getDate()+7);
+    }
     let desdesStr= `${desde.getFullYear()}-${desde.getMonth()+1}-${desde.getDate()}`;
-    let hastaStr= `${hasta.getFullYear()}-${hasta.getMonth()+1}-${hasta.getDate()}`;
+    let hastaStr = `${hasta.getFullYear()}-${hasta.getMonth()+1}-${hasta.getDate()}`;
 
-    let url = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${desdesStr}&primary_release_date.lte=${hastaStr}&api_key=${ this.apikey }&language=es`;
 
-    return this.http.get(url);
+
+    let url = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${desdesStr}&primary_release_date.lte=${hastaStr}&region=us&api_key=${ this.apikey }&language=es`;    return this.http.get(url);
   }
 
   getkids(){
-    let url = `${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${ this.apikey }&language=es`;
+    let url = `${this.urlMoviedb}/discover/movie?api_key=${ this.apikey }&language=es&primary_release_year=2020&sort_by=vote_average.desc`;
     return this.http.get(url);
   }
 
