@@ -20,10 +20,14 @@ export class PeliapiService {
   gercartelera(){
     let desde = new Date();
     let hasta = new Date();
+    // let dia = hasta.getDate()
+
     hasta.setDate(hasta.getDate()+7);
+
     if(hasta.getDay.length < 2){
-      hasta.setDate(hasta.getDate()+7);
+      hasta.setDate(hasta.getDate()+9);
     }
+
     let desdesStr= `${desde.getFullYear()}-${desde.getMonth()+1}-${desde.getDate()}`;
     let hastaStr = `${hasta.getFullYear()}-${hasta.getMonth()+1}-${hasta.getDate()}`;
 

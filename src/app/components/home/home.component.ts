@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
       this.PeliPopulares1;
       this.cartelera1;
       this.kids1;
-      this.cartelera();
       this.kids();
       this.cargando = false
       this.creatbucaqueda();
@@ -102,7 +101,7 @@ export class HomeComponent implements OnInit {
       this.busqueda = this.fb.group({
         buscar: ['', Validators.required]
       })
-      }
+    }
 
     buscarg(id){
       this.lol = false
@@ -118,11 +117,7 @@ export class HomeComponent implements OnInit {
       this.id = "";
     }
 
-    cartelera(){
-    this._ps.gercartelera().subscribe((resp:any )=>{
-      this.cartelera1 = resp.results
-    })
-    }
+
 
     peliin(id:string){
       const dialogRef  = this.dialog.open(ModalmaterialComponent,{
